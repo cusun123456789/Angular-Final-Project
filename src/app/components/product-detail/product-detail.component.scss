@@ -122,9 +122,15 @@ table {
   width: 100%;
 }
 
-td, th {
+td,
+th {
   width: 15%;
 }
-.button{
+.button {
   margin: 0px 10px 0px -10px;
+}
+
+.search-field {
+  margin: 20px 0px 0px 10px;
+  width: 50%;
 }

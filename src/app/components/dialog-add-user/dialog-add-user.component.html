@@ -23,6 +23,7 @@
     <mat-radio-group aria-label="Select an option" formControlName="gender">
       <mat-radio-button value="male">Male</mat-radio-button>
       <mat-radio-button value="female">Female</mat-radio-button>
+      <mat-radio-button value="other">Other</mat-radio-button>
     </mat-radio-group><br><br>
 
     <mat-form-field appearance="outline">
@@ -38,6 +39,6 @@
   </form>
 </div>
 <div mat-dialog-actions [align]="'center'">
-  <button mat-raised-button color="primary" (click)="addUser()">{{actionBtn}}</button>
+  <button mat-raised-button color="primary" (click)="addUser()" (keyup.enter)="addUser()" [disabled]="userForm.invalid">{{actionBtn}}</button>
   <button mat-raised-button color="warn" mat-dialog-close="close">Close</button>
 </div>

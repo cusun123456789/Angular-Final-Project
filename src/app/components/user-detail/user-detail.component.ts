@@ -9,6 +9,7 @@ import { NotifierService } from 'src/app/services/notifier.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -32,7 +33,8 @@ export class UserDetailComponent {
     private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
     private api: ApiService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private router: Router,
   ) { }
   ngOnInit(): void {
     this.getAllUsers()
@@ -96,6 +98,8 @@ export class UserDetailComponent {
       this.dataSource.paginator.firstPage();
     }
   }
-
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login'])}
 }
 

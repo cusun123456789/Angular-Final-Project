@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api-services.service';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AutocompelteService } from 'src/app/services/autocompelte.service';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-dialog-add-addproduct',
@@ -20,6 +21,7 @@ export class DialogAddproductComponent implements OnInit {
   noUsing() {
     this.isclick = false;
   }
+
   NameUser = ['quyet3', 'quyet2', 'quyet1']
   filteredOptions: any;
 
@@ -35,6 +37,16 @@ export class DialogAddproductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.productForm = this.formBuilder.group({
+      productName: ['', [Validators.required, Validators.minLength(4)]],
+      productCategory: ['', Validators.required],
+      productDate: ['', Validators.required],
+      productStatus: ['no using', [Validators.required]],
+      userName: ['',],
+      // productImg: ['', Validators.required],
+      productComment: ['', Validators.required]
+    })
+
     // lấy data vào lại form trong phần update
     if (this.editData) {
       this.actionBtn = 'Update'
@@ -43,34 +55,21 @@ export class DialogAddproductComponent implements OnInit {
       this.productForm.controls['productDate'].setValue(this.editData.productDate);
       this.productForm.controls['productStatus'].setValue(this.editData.productStatus);
       this.productForm.controls['userName'].setValue(this.editData.userName);
-      this.productForm.controls['productImg'].setValue(this.editData.productImg);
+      // this.productForm.controls['productImg'].setValue(this.editData.productImg);
       this.productForm.controls['productComment'].setValue(this.editData.productComment);
     }
-    this.getName()
-    this.initForm()
-  }
-  initForm() {
-    this.productForm = this.formBuilder.group({
-      productName: ['', [Validators.required, Validators.minLength(4)]],
-      productCategory: ['', Validators.required],
-      productDate: ['', Validators.required],
-      productStatus: ['', [Validators.required, Validators.minLength(4)]],
-      userName: ['',],
-      productImg: ['', Validators.required],
-      productComment: ['', Validators.required]
-    })
+
     this.productForm.get('userName')?.valueChanges.subscribe(response => {
       this.filterData(response)
     })
-  };
+    this.getName()
+  }
 
   filterData(enteredData: any) {
     this.filteredOptions = this.NameUser.filter(user => {
       return user.toLowerCase().indexOf(enteredData.toLowerCase()) > - 1
     })
   }
-
-
 
   getName() {
     this.apiNameUser.getUserName()
@@ -90,9 +89,11 @@ export class DialogAddproductComponent implements OnInit {
     return this.productForm.get('productStatus')
   } get userName() {
     return this.productForm.get('userName')
-  } get productImg() {
-    return this.productForm.get('productImg')
-  } get productComment() {
+  }
+  //  get productImg() {
+  //   return this.productForm.get('productImg')
+  // }
+  get productComment() {
     return this.productForm.get('productComment')
   }
 

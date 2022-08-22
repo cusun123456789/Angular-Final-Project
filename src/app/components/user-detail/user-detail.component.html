@@ -8,9 +8,6 @@
           <nav class="main-nav" role="navigation">
             <ul class="unstyled list-hover-slide">
               <li><a routerLink="/product">Show Product</a></li>
-              <li><a routerLink="/login">Login</a></li>
-              <li><a routerLink="/register">Register</a></li>
-              <li><a href="#">LogOut</a></li>
             </ul>
           </nav>
         </div>
@@ -24,27 +21,33 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>user</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
 
-      <button mat-raised-button color="accent" (click)="openDialog()">Add User</button>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>
+         Search By Name
+        </mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="MacBook" #input>
+      </mat-form-field>
+
+      <span class="example-spacer"></span>
+
+      <button mat-raised-button color="warn" (click)="logout()">LogOut</button>
     </mat-toolbar>
 
     <!-- Add Content Here -->
     <div class="container">
       <div>
-        <mat-form-field appearance="outline">
-          <mat-label>Search</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-        </mat-form-field>
+
+        <mat-toolbar style="background-color: white;">
+          <span class="example-spacer"></span>
+          <button mat-raised-button color="primary" (click)="openDialog()">Add User</button>
+        </mat-toolbar>
 
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="userName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
               <td mat-cell *matCellDef="let row"> {{row.userName}} </td>
             </ng-container>
 

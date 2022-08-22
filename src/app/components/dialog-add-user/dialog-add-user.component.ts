@@ -27,7 +27,7 @@ export class DialogAddUserComponent implements OnInit {
 
     this.userForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(4)]],
-      gender: ['', Validators.required],
+      gender: ['male', Validators.required],
       birthDate: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       email: ['', [Validators.required, Validators.email]],
@@ -90,7 +90,5 @@ export class DialogAddUserComponent implements OnInit {
       }
     })
   }
-
-
 
 }

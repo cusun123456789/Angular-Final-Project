@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           return a.userName === this.loginForm.value.userName && a.password === this.loginForm.value.password
         });
         if (user) {
-          localStorage.setItem('token', 'daylatokennhungkolaydc');
+          localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c');
           this.loginForm.value.userName == 'quyet' ? localStorage.setItem('UserType','Admin' ) : localStorage.setItem('UserType','empjloye')
           this.notifier.showNotification('login success', 'oke', 'success');
           this.loginForm.reset();
