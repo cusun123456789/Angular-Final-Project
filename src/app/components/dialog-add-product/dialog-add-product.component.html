@@ -1,0 +1,74 @@
+<h1> Add Product Form</h1><br>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product name</mat-label>
+      <input matInput formControlName="productName">
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product category</mat-label>
+      <mat-select formControlName="productCategory">
+        <mat-option value="Laptop">Laptop</mat-option>
+        <mat-option value="Pc">Pc</mat-option>
+        <mat-option value="Monitor">Monitor</mat-option>
+        <mat-option value="Headphone">Headphone</mat-option>
+        <mat-option value="Keyboar">Keyboar</mat-option>
+        <mat-option value="Mouse">Mouse</mat-option>
+      </mat-select>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field><br><br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="productDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+    </mat-form-field><br><br>
+    <label>
+      <h2>Product Status</h2>
+    </label><br><br>
+
+    <mat-radio-group aria-label="Select an option" formControlName="productStatus">
+      <mat-radio-button value="using" (click)="using()">Using</mat-radio-button>
+      <mat-radio-button value="no using" (click)="noUsing()">No using</mat-radio-button>
+    </mat-radio-group><br><br>
+
+    <!-- <mat-form-field appearance="outline" *ngIf="isclick">
+      <mat-label> User name</mat-label>
+      <input matInput formControlName="userName">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline" *ngIf="isclick">
+      <mat-label>User name</mat-label>
+
+      <input matInput [matAutocomplete]="auto" formControlName="userName">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let user of filteredOptions" value="{{user}}">
+          {{user}}
+        </mat-option>
+      </mat-autocomplete>
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product img</mat-label>
+      <input matInput formControlName="productImg">
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <textarea matInput formControlName="productComment"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions [align]="'center'">
+  <button mat-raised-button color="primary" (click)="addProduct()"
+    [disabled]="productForm.invalid">{{actionBtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close="close">Close</button>
+</div>

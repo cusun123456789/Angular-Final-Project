@@ -1,0 +1,49 @@
+.background-custom {
+  background-image: url(https://w.wallhaven.cc/full/z8/wallhaven-z8wj6y.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+  .card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  }
+  .card-registration .select-arrow {
+  top: 13px;
+  }
+  :host .mat-form-field{
+    width: 100%;
+    padding: 0px;
+    padding-bottom: 0em !important;
+  }
+  .example-radio-button {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 0px;
+  }
+  h4{
+    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 100;
+  }
+  h4:hover{
+    opacity: 0.5;
+  }
+  .button-spacer{
+    height: 50px;
+    width: 70%;
+  }
+  .button-spacer:hover{
+    opacity:0.7;
+  }
+  .button-warn{
+    height: 50px;
+    width: 15%;
+  }
+  .button-warn:hover{
+    opacity:0.7;
+  }

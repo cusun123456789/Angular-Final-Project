@@ -1,0 +1,40 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h1>Welcome Back</h1>
+            <h3>Fill in the information to continue</h3><hr><br><br>
+            <form [formGroup]="loginForm">
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter your userName</mat-label>
+                  <input matInput formControlName="userName" >
+                  <mat-hint class="invalid" *ngIf="userName && userName.invalid && userName.touched">User name error
+                  </mat-hint>
+                </mat-form-field>
+              </div><br><br>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Enter your password</mat-label>
+                  <input type="password" matInput formControlName="password">
+                  <mat-hint class="invalid" *ngIf="password && password.invalid && password.touched">password error
+                  </mat-hint>
+                </mat-form-field>
+              </div><br>
+              <div>
+                <h4 routerLink="/singin">Don't have account? Sign up here</h4><span> </span>
+              </div><br><br>
+              <div fxLayout="row" fxLayoutAlign="space-around center">
+                <button class="button-spacer" mat-raised-button color="primary"(click)="login()">Sign in</button>
+                <button class="button-warn" mat-raised-button color="warn" routerLink="/product">back</button>
+              </div><br><br>
+              <hr>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

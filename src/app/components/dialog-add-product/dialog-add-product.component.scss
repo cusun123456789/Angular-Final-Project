@@ -1,0 +1,24 @@
+
+.mat-dialog-title {
+  text-align: center;
+  font-weight: 800;
+}
+:host .mat-form-field{
+  margin-left:2%;
+  width: 98%;
+  padding: 0px;
+  padding-bottom: 0em !important;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px -15px;
+
+}
+.mat-radio-group{
+  margin-left: 15px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 50px;
+}

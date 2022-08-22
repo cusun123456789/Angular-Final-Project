@@ -1,0 +1,52 @@
+{
+  "Users": [
+    {
+      "userName": "Quyet1",
+      "gender": "male",
+      "birthDate": "2001-08-07T17:00:00.000Z",
+      "phoneNumber": 352323054,
+      "email": "quyet@gmail.com",
+      "id": 1
+    },
+    {
+      "userName": "Duong",
+      "gender": "male",
+      "birthDate": "1996-07-17T17:00:00.000Z",
+      "phoneNumber": 984913405,
+      "email": "duong@gmail.com",
+      "id": 2
+    },
+    {
+      "userName": "linh1",
+      "gender": "male",
+      "birthDate": "2001-07-18T17:00:00.000Z",
+      "phoneNumber": 456234543,
+      "email": "linh@gmail.com",
+      "id": 3
+    }
+  ],
+  "productList": [
+    {
+      "productName": "Acer Nitro5",
+      "productCategory": "Laptop",
+      "productDate": "2022-08-21T17:00:00.000Z",
+      "productStatus": "using",
+      "userName": "linh1",
+      "productImg": "gg",
+      "productComment": "new100%",
+      "id": 4
+    }
+  ],
+  "profile": [
+    {
+      "userName": "quyet",
+      "password": "quyet2k1",
+      "repeatedPassword": "quyet2k1",
+      "birthDate": "2001-08-07T17:00:00.000Z",
+      "gender": "male",
+      "phoneNumber": 352323054,
+      "email": "quyet@gmail.com",
+      "id": 1
+    }
+  ]
+}

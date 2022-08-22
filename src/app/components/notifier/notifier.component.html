@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="title-style">
+    <h2>{{data.type | titlecase}}<mat-icon class=".icon-style">done</mat-icon></h2>
+
+  </div>
+  <div class="content-style">
+    {{data.message | uppercase}}
+  </div>
+  <div class="button-style">
+    <button mat-flat-button (click)="snackBarRef.dismiss()">{{data.buttonText | uppercase}}</button>
+  </div>
+  </div>
+
+
