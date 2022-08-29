@@ -37,14 +37,15 @@ export class DialogAddproductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.productForm = this.formBuilder.group({
       productName: ['', [Validators.required, Validators.minLength(4)]],
       productCategory: ['', Validators.required],
       productDate: ['', Validators.required],
-      productStatus: ['no using', [Validators.required]],
+      productStatus: ['clear', [Validators.required]],
       userName: ['',],
       // productImg: ['', Validators.required],
-      productComment: ['', Validators.required]
+      productComment: ['']
     })
 
     // lấy data vào lại form trong phần update
@@ -67,7 +68,7 @@ export class DialogAddproductComponent implements OnInit {
 
   filterData(enteredData: any) {
     this.filteredOptions = this.NameUser.filter(user => {
-      return user.toLowerCase().indexOf(enteredData.toLowerCase()) > - 1
+      return user?.toLocaleLowerCase().indexOf(enteredData?.toLocaleLowerCase()) > - 1
     })
   }
 
@@ -128,5 +129,11 @@ export class DialogAddproductComponent implements OnInit {
           this.notifier.showNotification('There was an error', 'oke', 'error')
         }
       })
+  }
+  /// upload anh
+  selectFile = null;
+  onFileSelected(event: any) {
+    this.selectFile = event.target.files[0];
+
   }
 }

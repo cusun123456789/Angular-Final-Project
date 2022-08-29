@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddproductComponent } from '../dialog-add-product/dialog-add-addproduct.component';
 import { ApiService } from 'src/app/services/api-services.service';
 import { NotifierService } from 'src/app/services/notifier.service';
@@ -10,6 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -35,6 +37,7 @@ export class ProductDetailComponent implements OnInit {
     private api: ApiService,
     private notifier: NotifierService,
     private router: Router,
+    private dialogService: DialogService,
   ) { }
   ngOnInit(): void {
     this.getAllProduct()
@@ -49,6 +52,8 @@ export class ProductDetailComponent implements OnInit {
       }
     })
   }
+
+
 
   getAllProduct() {
     this.api.getProduct()
@@ -76,19 +81,24 @@ export class ProductDetailComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    this.api.deleteProduct(id)
-      .subscribe({
-        next: () => {
-          this.notifier.showNotification('Product Delete', 'oke', 'success')
-          this.getAllProduct()
-        },
-        error: () => {
-          this.notifier.showNotification('There was an error', 'oke', 'error')
-        },
-        complete: () => {
-          console.log('deleteis product ok');
-        },
-      })
+    this.dialogService.opoenConfirmDialog('Do you want to delete this product')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.api.deleteProduct(id)
+            .subscribe({
+              next: () => {
+                this.notifier.showNotification('Product Delete', 'oke', 'success')
+                this.getAllProduct()
+              },
+              error: () => {
+                this.notifier.showNotification('There was an error', 'oke', 'error')
+              },
+              complete: () => {
+                console.log('deleteis product ok');
+              },
+            })
+        }
+      });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -100,5 +110,6 @@ export class ProductDetailComponent implements OnInit {
   }
   logout() {
     localStorage.clear();
-    this.router.navigate(['login'])}
+    this.router.navigate(['login'])
+  }
 }

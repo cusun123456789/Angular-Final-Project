@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar><img class="logo" width="50px" height="50px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"></mat-toolbar>
     <mat-nav-list>
       <header class="header" role="banner">
         <div class="nav-wrap">
@@ -20,13 +20,12 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>user</span>
-
+      <span>USER</span>
       <mat-form-field appearance="outline" class="search-field">
         <mat-label>
-         Search By Name
+         Search User
         </mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="MacBook" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Quyet" #input>
       </mat-form-field>
 
       <span class="example-spacer"></span>
@@ -47,37 +46,35 @@
           <table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="userName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+              <th class="title-table" mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
               <td mat-cell *matCellDef="let row"> {{row.userName}} </td>
             </ng-container>
 
-            <!-- Progress Column -->
+
             <ng-container matColumnDef="gender">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender</th>
-              <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
+              <th class="title-table" mat-header-cell *matHeaderCellDef mat-sort-header> Gender</th>
+              <td mat-cell *matCellDef="let row"><img  width="30px" height="30px"  src="{{row.gender}}">  </td>
             </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="birthDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Birth Date </th>
+              <th class="title-table" mat-header-cell *matHeaderCellDef mat-sort-header> Birth Date </th>
               <td mat-cell *matCellDef="let row"> {{row.birthDate | date:"dd/MM/yy"}} </td>
             </ng-container>
 
-            <!-- Fruit Column -->
             <ng-container matColumnDef="phoneNumber">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number </th>
+              <th class="title-table" mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number </th>
               <td mat-cell *matCellDef="let row"> {{row.phoneNumber}} </td>
             </ng-container>
 
             <ng-container matColumnDef="email">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email </th>
+              <th class="title-table" mat-header-cell *matHeaderCellDef mat-sort-header>Email </th>
               <td mat-cell *matCellDef="let row"> {{row.email}} </td>
             </ng-container>
 
             <ng-container matColumnDef="edit">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
-              <td mat-cell *matCellDef="let row">
-                <button class="button" mat-mini-fab color="primary" (click)="editUser(row)">
+              <th class="title-table" mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+              <td mat-cell *matCellDef="let row" [align]="'left'">
+                <button class="button"  mat-mini-fab color="primary" (click)="editUser(row)">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-mini-fab color="warn" (click)="deleteUser(row.id)">
@@ -102,3 +99,4 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+

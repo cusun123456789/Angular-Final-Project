@@ -5,7 +5,8 @@
     <mat-form-field appearance="outline">
       <mat-label>User Name</mat-label>
       <input matInput formControlName="userName" type="text">
-      <mat-hint>Hint</mat-hint>
+      <mat-hint class="invalid" *ngIf="userName && userName.invalid && userName.touched">User name wrong
+      </mat-hint>
     </mat-form-field><br><br>
 
     <mat-form-field appearance="outline">
@@ -13,7 +14,8 @@
       <input matInput [matDatepicker]="picker" formControlName="birthDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-hint class="invalid" *ngIf="birthDate && birthDate.invalid && birthDate.touched">Birth Date wrong
+      </mat-hint>
     </mat-form-field><br><br>
 
 
@@ -21,20 +23,25 @@
       <h3>Gender</h3>
     </label><br>
     <mat-radio-group aria-label="Select an option" formControlName="gender">
-      <mat-radio-button value="male">Male</mat-radio-button>
-      <mat-radio-button value="female">Female</mat-radio-button>
-      <mat-radio-button value="other">Other</mat-radio-button>
+      <mat-radio-button value="https://cdn.icon-icons.com/icons2/2248/PNG/512/gender_male_icon_137554.png">Male</mat-radio-button>
+      <mat-radio-button value="https://cdn.icon-icons.com/icons2/3396/PNG/512/female_gender_icon_214264.png">Female</mat-radio-button>
+      <mat-radio-button value="https://cdn.icon-icons.com/icons2/2248/PNG/512/gender_male_female_icon_138539.png">Other</mat-radio-button>
+      <mat-hint class="invalid" *ngIf="gender && gender.invalid && gender.touched">Gender is wrong
+      </mat-hint>
     </mat-radio-group><br><br>
 
     <mat-form-field appearance="outline">
-      <mat-label>PhoneNumber</mat-label>
+      <mat-label>Phone Number</mat-label>
       <input matInput formControlName="phoneNumber" type="number">
-      <mat-hint>Hint</mat-hint>
+      <mat-hint class="invalid" *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched ">Phone Number wrong
+      </mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" type="text">
+      <mat-hint class="invalid" *ngIf="email && email.invalid && email.touched">Email wrong
+      </mat-hint>
     </mat-form-field>
   </form>
 </div>

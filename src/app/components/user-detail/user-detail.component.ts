@@ -1,8 +1,8 @@
-import { Component, Inject, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { ApiService } from 'src/app/services/api-services.service';
 import { NotifierService } from 'src/app/services/notifier.service';
@@ -10,6 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { DialogService } from 'src/app/services/dialog.service';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -35,6 +37,7 @@ export class UserDetailComponent {
     private api: ApiService,
     private notifier: NotifierService,
     private router: Router,
+    private dialogService: DialogService,
   ) { }
   ngOnInit(): void {
     this.getAllUsers()
@@ -49,6 +52,7 @@ export class UserDetailComponent {
       }
     })
   }
+
 
   getAllUsers() {
     this.api.getUser()
@@ -76,18 +80,23 @@ export class UserDetailComponent {
   }
 
   deleteUser(id: number) {
-    this.api.deleteUser(id)
-      .subscribe({
-        next: () => {
-          this.notifier.showNotification('User Delete', 'oke', 'success')
-          this.getAllUsers()
-        },
-        error: () => {
-          this.notifier.showNotification('There was an error', 'oke', 'error')
-        },
-        complete: () => {
-          console.log('deleteis user success');
-        },
+    this.dialogService.opoenConfirmDialog('Do you want to delete this user')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.api.deleteUser(id)
+            .subscribe({
+              next: () => {
+                this.notifier.showNotification('User Delete', 'oke', 'success')
+                this.getAllUsers()
+              },
+              error: () => {
+                this.notifier.showNotification('There was an error', 'oke', 'error')
+              },
+              complete: () => {
+                // console.log('deleteis user success');
+              },
+            })
+        }
       })
   }
   applyFilter(event: Event) {
@@ -100,6 +109,6 @@ export class UserDetailComponent {
   }
   logout() {
     localStorage.clear();
-    this.router.navigate(['login'])}
+    this.router.navigate(['login'])
+  }
 }
-

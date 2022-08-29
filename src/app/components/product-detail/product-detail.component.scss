@@ -70,7 +70,7 @@ $white-off: #dfdbd9;
   a {
     padding: 1.1em 0;
     color: $white-off;
-    font: 400 1.125em $sans;
+    font: 500 1.3em $sans;
     text-align: center;
     &:hover {
       color: black;
@@ -122,15 +122,15 @@ table {
   width: 100%;
 }
 
-td,
-th {
-  width: 15%;
-}
-.button {
-  margin: 0px 10px 0px -10px;
-}
+// td,
+// th {
+//   width: 15%;
+// }
 
 .search-field {
   margin: 20px 0px 0px 10px;
   width: 50%;
 }
+.button{
+  margin-right: 5px;
+  }

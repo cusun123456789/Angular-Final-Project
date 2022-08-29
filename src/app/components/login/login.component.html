@@ -6,15 +6,20 @@
           <div class="card-body p-4 p-sm-5">
             <h1>Welcome Back</h1>
             <h3>Fill in the information to continue</h3><hr><br><br>
+
             <form [formGroup]="loginForm">
               <div>
                 <mat-form-field appearance="outline">
                   <mat-label>Enter your userName</mat-label>
                   <input matInput formControlName="userName" >
-                  <mat-hint class="invalid" *ngIf="userName && userName.invalid && userName.touched">User name error
+                  <mat-hint class="invalid"
+                  *ngIf="userName && userName.invalid && userName.touched">
+                  User name error
                   </mat-hint>
                 </mat-form-field>
-              </div><br><br>
+              </div>
+
+              <br><br>
               <div>
                 <mat-form-field appearance="outline">
                   <mat-label>Enter your password</mat-label>

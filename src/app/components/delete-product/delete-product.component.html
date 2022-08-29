@@ -1,0 +1,12 @@
+<div>
+  <div class="content-container">
+
+    <div mat-dialog-content>
+      <h2>{{data.message}}</h2>
+    </div>
+  </div>
+  <div mat-dialog-actions [align]="'center'">
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">No</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">Yes</button>
+  </div>
+</div>

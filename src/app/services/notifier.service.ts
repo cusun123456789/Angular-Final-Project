@@ -7,6 +7,7 @@ import { NotifierComponent } from '../components/notifier/notifier.component';
 })
 export class NotifierService {
 
+
   constructor(private snackBar: MatSnackBar) { }
 
   showNotification( displayMessage: string, buttonText: string, messageType: 'error' | 'success'){

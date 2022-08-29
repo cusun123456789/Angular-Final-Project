@@ -13,7 +13,10 @@ import { HttpClient } from '@angular/common/http';
 })
 
   export class SinginComponent implements OnInit {
+
     genderList = ['male', 'female', 'other']
+
+
     public signupForm !: FormGroup;
 
     constructor(
@@ -55,6 +58,29 @@ import { HttpClient } from '@angular/common/http';
       ],
       });
     }
+
+    get userName() {
+      return this.signupForm.get('userName')
+    }
+    get email() {
+      return this.signupForm.get('email')
+    }
+    get password(){
+      return this.signupForm.get('password')
+    }
+    get repeatedPassword(){
+      return this.signupForm.get('repeatedPassword')
+    }
+    get gender() {
+      return this.signupForm.get('gender')
+    }
+    get birthDate() {
+      return this.signupForm.get('birthDate')
+    }
+    get phoneNumber() {
+      return this.signupForm.get('phoneNumber')
+    }
+
 
   singUp(){
     this.api.postUserSingin(this.signupForm.value)

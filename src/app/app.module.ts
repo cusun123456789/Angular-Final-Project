@@ -9,8 +9,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SinginComponent } from './components/singin/singin.component';
 import { PageNotPoundComponent } from './components/page-not-pound/page-not-pound.component';
 import { DialogAddproductComponent } from './components/dialog-add-product/dialog-add-addproduct.component';
-import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
-
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -42,6 +40,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DialogAddUserComponent } from './components/dialog-add-user/dialog-add-user.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
+import { DeleteProductComponent } from './components/delete-product/delete-product.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -52,9 +52,11 @@ import { NotifierComponent } from './components/notifier/notifier.component';
     SinginComponent,
     PageNotPoundComponent,
     DialogAddproductComponent,
-    DialogDeleteComponent,
     DialogAddUserComponent,
-    NotifierComponent
+    NotifierComponent,
+    DeleteProductComponent,
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -89,6 +91,9 @@ import { NotifierComponent } from './components/notifier/notifier.component';
     MatAutocompleteModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AppComponent,
+    DeleteProductComponent]
 })
 export class AppModule { }
